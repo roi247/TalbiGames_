@@ -125,8 +125,8 @@ public class PlayerController : MonoBehaviour {
 		//Apply camera rotation
 		motor.RotateCamera(_cameraRotationX);
 
-		// Calculate the thrusterforce based on player input
-		//Vector3 _thrusterForce = Vector3.zero;
+        // Calculate the thrusterforce based on player input
+        //Vector3 _thrusterForce = Vector3.zero;
         /*
 		if (Input.GetButton ("Jump") && thrusterFuelAmount > 0f)
 		{
@@ -146,10 +146,10 @@ public class PlayerController : MonoBehaviour {
 		thrusterFuelAmount = Mathf.Clamp(thrusterFuelAmount, 0f, 1f);
         */
 
-		// Apply the thruster force
-		//motor.ApplyThruster(_thrusterForce);
+        // Apply the thruster force
+        //motor.ApplyThruster(_thrusterForce);
 
-	}
+}
 
     /*
 	private void SetJointSettings (float _jointSpring)

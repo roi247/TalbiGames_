@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using MultiplayerFps;
 
 public class DistManager : MonoBehaviour {
 

@@ -1,60 +1,67 @@
 using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Player))]
-public class PlayerScore : MonoBehaviour {
+namespace MultiplayerFps
+{
 
-	Player player;
+    [RequireComponent(typeof(Player))]
+    public class PlayerScore : MonoBehaviour
+    {
 
-	void Start ()
-	{
-		player = GetComponent<Player>();
-		StartCoroutine(SyncScoreLoop());
-	}
+        Player player;
 
-	void OnDestroy ()
-	{
-		if (player != null)
-			SyncNow();
-	}
+        void Start()
+        {
+            player = GetComponent<Player>();
+            StartCoroutine(SyncScoreLoop());
+        }
 
-	IEnumerator SyncScoreLoop ()
-	{
-		while (true)
-		{
-			yield return new WaitForSeconds(5f);
+        void OnDestroy()
+        {
+            if (player != null)
+                SyncNow();
+        }
 
-			SyncNow();
-		}
-	}
+        IEnumerator SyncScoreLoop()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(5f);
 
-	void SyncNow ()
-	{
-		if (UserAccountManager.IsLoggedIn)
-		{
-			UserAccountManager.instance.GetData(OnDataRecieved);
-		}
-	}
+                SyncNow();
+            }
+        }
 
-	void OnDataRecieved(string data)
-	{
-		if (player.kills == 0 && player.deaths == 0)
-			return;
+        void SyncNow()
+        {
+            if (UserAccountManager.IsLoggedIn)
+            {
+                UserAccountManager.instance.GetData(OnDataRecieved);
+            }
+        }
 
-		int kills = DataTranslator.DataToKills(data);
-		int deaths = DataTranslator.DataToDeaths(data);
+        void OnDataRecieved(string data)
+        {
+            if (player.kills == 0 && player.deaths == 0)
+                return;
 
-		int newKills = player.kills + kills;
-		int newDeaths = player.deaths + deaths;
+            int kills = DataTranslator.DataToKills(data);
+            int deaths = DataTranslator.DataToDeaths(data);
 
-		string newData = DataTranslator.ValuesToData(newKills, newDeaths);
+            int newKills = player.kills + kills;
+            int newDeaths = player.deaths + deaths;
 
-		Debug.Log("Syncing: " + newData);
+            string newData = DataTranslator.ValuesToData(newKills, newDeaths);
 
-		player.kills = 0;
-		player.deaths = 0;
+            Debug.Log("Syncing: " + newData);
 
-		UserAccountManager.instance.SendData(newData);
-	}
+            player.kills = 0;
+            player.deaths = 0;
+
+            UserAccountManager.instance.SendData(newData);
+        }
+
+    }
 
 }
+

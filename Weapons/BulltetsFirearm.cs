@@ -2,23 +2,26 @@
 using System.Collections;
 using UnityEngine.Networking; 
 
-
-public class BulltetsFirearm : PlayerWeapon
+namespace MultiplayerFps
 {
-    [SerializeField]
-    protected Rigidbody bullet;
-    [SerializeField]
-    protected Transform barrelEnd;
-
-    [SerializeField]
-    protected float bulletForceFactor = 2000f;
-
-    [SerializeField]
-    protected float maxDamageRange = 8f;
-
-    public override void Shoot()
+    public class BulltetsFirearm : PlayerWeapon
     {
-        base.Shoot();
-    }
+        [SerializeField]
+        protected Rigidbody bullet;
+        [SerializeField]
+        protected Transform barrelEnd;
 
+        [SerializeField]
+        protected float bulletForceFactor = 2000f;
+
+        [SerializeField]
+        protected float maxDamageRange = 8f;
+
+        public override void Shoot()
+        {
+            base.Shoot();
+        }
+
+    }
 }
+

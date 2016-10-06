@@ -2,10 +2,15 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class Shotgun : RaycastFirearm {
-
-    public override void PlayShootingAudio()
+namespace MultiplayerFps
+{
+    public class Shotgun : RaycastFirearm
     {
-        base.PlayShootingAudio();
+        public override void PlayShootingAudio()
+        {
+            base.PlayShootingAudio();
+        }
     }
 }
+
+

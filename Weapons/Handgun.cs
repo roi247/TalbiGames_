@@ -1,18 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
-
-public class Handgun : RaycastFirearm
+namespace MultiplayerFps
 {
-    [SerializeField] Animator handgunAnimator;
-    public override void PlayShootingAudio()
+    public class Handgun : RaycastFirearm
     {
-        base.PlayShootingAudio();
-    }
+        [SerializeField]
+        Animator handgunAnimator;
+        public override void PlayShootingAudio()
+        {
+            base.PlayShootingAudio();
+        }
 
-    public override void MakeLocalShootEffects()
-    {
-        base.MakeShootEffects();
-        handgunAnimator.Play("Fire");
+        public override void MakeLocalShootEffects()
+        {
+            base.MakeShootEffects();
+            handgunAnimator.Play("Fire");
+        }
     }
 }
+
+

@@ -1,23 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
-
-public class SciFiAutomatic : RaycastFirearm
+namespace MultiplayerFps
 {
-    public override void PlayShootingAudio()
+    public class SciFiAutomatic : RaycastFirearm
     {
-        if (! weaponManager.currentWeaponAudio.isPlaying)
-            weaponManager.currentWeaponAudio.Play();
-    }
-
-    void Update()
-    {
-        if(Input.GetButtonUp("Fire1"))
+        public override void PlayShootingAudio()
         {
-            if (playerShooting!=null)
-                playerShooting.CmdOnStopShootingAudio();
+            if (!weaponManager.currentWeaponAudio.isPlaying)
+                weaponManager.currentWeaponAudio.Play();
         }
 
+        void Update()
+        {
+            if (Input.GetButtonUp("Fire1"))
+            {
+                if (playerShooting != null)
+                    playerShooting.CmdOnStopShootingAudio();
+            }
 
+
+        }
     }
+
 }
+

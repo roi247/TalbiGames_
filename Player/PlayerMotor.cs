@@ -1,6 +1,6 @@
 using UnityEngine;
 using System;
-
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMotor : MonoBehaviour {
@@ -28,6 +28,9 @@ public class PlayerMotor : MonoBehaviour {
 	private float cameraRotationLimit = 85f;
 
 	private Rigidbody rb;
+
+    [Serializable] public class OnPlayerFall : UnityEvent<int> { }
+    public OnPlayerFall onPlayerFall;
 
 	void Start ()
 	{
@@ -120,8 +123,7 @@ public class PlayerMotor : MonoBehaviour {
         if (damagePlayerOnFall && healthDecrease>0)
         {
             //Damage Player
-            GetComponent<PlayerShoot>().CmdPlayerShot(transform.name, healthDecrease, transform.name);
-            GetComponent<Player>().PlayHitGroundSound();
+            //GetComponent<PlayerShoot>().CmdPlayerShot(transform.name, healthDecrease, transform.name);
         }
     }
 
@@ -135,8 +137,7 @@ public class PlayerMotor : MonoBehaviour {
         if (damagePlayerOnFall && healthDecrease>0)
         {
             //Damage Player
-            GetComponent<PlayerShoot>().CmdPlayerShot(transform.name, healthDecrease, transform.name);
-            GetComponent<Player>().PlayHitGroundSound();
+            //GetComponent<PlayerShoot>().CmdPlayerShot(transform.name, healthDecrease, transform.name);
         }
     }
 
