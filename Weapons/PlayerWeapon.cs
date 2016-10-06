@@ -1,12 +1,10 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.Networking;
 
 namespace MultiplayerFps
 {
     public class PlayerWeapon : MonoBehaviour
     {
-
         public string weaponName = "Glock";
         [SerializeField]
         protected PlayerShoot playerShooting;

@@ -122,8 +122,8 @@ public class PlayerMotor : MonoBehaviour {
         Debug.Log("collision! . velocity is: " + _velocity.ToString() + "Damage is: " + healthDecrease.ToString());
         if (damagePlayerOnFall && healthDecrease>0)
         {
-            //Damage Player
-            //GetComponent<PlayerShoot>().CmdPlayerShot(transform.name, healthDecrease, transform.name);
+            if (onPlayerFall != null)
+                onPlayerFall.Invoke(healthDecrease);
         }
     }
 
@@ -136,8 +136,8 @@ public class PlayerMotor : MonoBehaviour {
         Debug.Log("collision! . velocity is: " + _velocity.ToString() + "Damage is: " + healthDecrease.ToString());
         if (damagePlayerOnFall && healthDecrease>0)
         {
-            //Damage Player
-            //GetComponent<PlayerShoot>().CmdPlayerShot(transform.name, healthDecrease, transform.name);
+            if (onPlayerFall != null)
+                onPlayerFall.Invoke(healthDecrease);
         }
     }
 
