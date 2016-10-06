@@ -12,8 +12,6 @@ namespace SurvivalGame
         [SerializeField]
         float health = 100f;
 
-        public GameObject saba;
-
         // Use this for initialization
         void Start()
         {

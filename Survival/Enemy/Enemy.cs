@@ -23,7 +23,7 @@ namespace SurvivalGame
         // Use this for initialization
         void Start()
         {
-
+            SurvivalGameManager.Instance.AddEnemyToList(this);
         }
 
         void FollowLocalPlayer()
@@ -75,6 +75,21 @@ namespace SurvivalGame
                 Gizmos.DrawRay(this.gameObject.transform.position, targetPlayer.transform.position - this.gameObject.transform.position);
             }
 
+        }
+
+        public void TakeDamage(int damage)
+        {
+            health -= damage;
+            
+            if (health <= 0)
+            {
+                Die();
+            }
+        }
+
+        void Die()
+        {
+            //EXPLODE AND DIEEE
         }
 
     }
